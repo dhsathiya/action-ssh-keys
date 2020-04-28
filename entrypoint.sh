@@ -3,6 +3,8 @@
 # Install dependencies.
 apt update && apt install git curl rsync -y
 
+cd $GITHUB_WORKSPACE
+
 # Create temp directory
 SSH_TEMP=/SSH_TEMP
 mkdir $SSH_TEMP
