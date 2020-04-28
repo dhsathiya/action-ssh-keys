@@ -66,5 +66,5 @@ The action will by default ignore first line.
 - [ ] Publish Action
 - [ ] Slack Notification
 
-## Licence
+## License
 [MIT](LICENSE) © 2020 Devarshi Sathiya
