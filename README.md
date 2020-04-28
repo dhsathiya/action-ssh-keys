@@ -10,7 +10,7 @@ _Note: This action is still under development, but works. Check TODO for more de
 ## Why?
 I have a lot of local headless machines and I manage lot of remote servers at my company. I get bore when I have to add a user or check the SSH access for someone.
 
-With this action I can centrally monitor who can access what! 
+With this action I can centrally monitor who can access what!
 
 ## Configuration
 1. create workflow directory and add yml file. `.github/workflows/ssh_key.yml`
@@ -58,6 +58,7 @@ The action will by default ignore first line.
 ## TODO
 - [ ] Checks and filters for CSV file fields
 - [ ] Only run on diff
+- [ ] Fail checks
 - [ ] Feature: Direct SSH key support
 - [ ] Make action code as per best practices
 - [ ] Lighter Docker image
