@@ -65,3 +65,6 @@ The action will by default ignore first line.
 - [ ] [HashiCorp Vault](https://www.vaultproject.io/) Support
 - [ ] Publish Action
 - [ ] Slack Notification
+
+## Licence
+[MIT](LICENSE) © 2020 Devarshi Sathiya
