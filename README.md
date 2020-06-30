@@ -3,7 +3,7 @@ Manage SSH authorized keys from GitHub with GitHub Actions.
 
 This action will
 1. Fetch public key from GitHub username e.g. https://github.com/dhsathiya.keys
-2. Add provided users in keys.csv to the respective remote machines.
+2. Add SSH public key and provided users in keys.csv to the respective remote machines.
 
 _Note: This action is still under development, but works. Check TODO for more details_
 
@@ -49,9 +49,11 @@ With this action I can centrally monitor who can access what!
 |user@hostname             |/path/to/authorized_keys     |      |      |      |      |
 |--------------------------|-----------------------------|------|------|------|------|
 |root@dev.sitename.tld     |/root/.ssh/authorized_keys   |user1 |user2 |      |      |
-|www-data@prod.sitename.tld|/var/www/.ssh/authorized_keys|user1 |user2 |user3 |user4 |
+|www-data@prod.sitename.tld|/var/www/.ssh/authorized_keys|user1 |user2 |ssh-rsa example/sSh+KEy user3 |user4 |
 
 The action will by default ignore first line.
+
+You can add SSH public key also instead of GitHub user name.
 
 [Example CSV File](./keys.csv)
 
@@ -59,7 +61,7 @@ The action will by default ignore first line.
 - [ ] Checks and filters for CSV file fields
 - [ ] Only run on diff
 - [ ] Fail checks
-- [ ] Feature: Direct SSH key support
+- [x] Feature: Direct SSH key support
 - [ ] Make action code as per best practices
 - [ ] Lighter Docker image
 - [ ] [HashiCorp Vault](https://www.vaultproject.io/) Support

@@ -29,7 +29,6 @@ Host *
 UserKnownHostsFile ${SSH_DIR}/known_hosts
 IdentityFile ${SSH_DIR}/id_rsa
 EOL
-
 }
 
 # SSH setup for known hosts
@@ -48,7 +47,17 @@ while IFS=, read -r host auth_path users; do
 
     IFS=',' read -r -a array <<< "$users"
     for user in ${array[@]}; do
-        echo "$(curl https://github.com/$user.keys) $user" >> $SSH_TEMP/$host/authorized_keys
+
+        # Add the key in a temp file to check if it is a valid SSH key
+        echo $user > /temp.ssh
+        if $(ssh-keygen -l -f /temp.ssh ); then
+            echo $user >> $SSH_TEMP/$host/authorized_keys
+        else
+            key=$(curl https://github.com/$user.keys)
+            if [ "$key" != "" ] && [ "$key" != "Not Found" ]; then
+                echo "$(curl https://github.com/$user.keys) $user" >> $SSH_TEMP/$host/authorized_keys
+            fi
+        fi
     done
 
     rsync -avzhP $SSH_TEMP/$host/authorized_keys $host:$auth_path
